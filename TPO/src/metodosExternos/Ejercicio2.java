@@ -1,31 +1,20 @@
 package metodosExternos;
 
 import tda.ColaTDA;
-import tda.ConjuntoTDA;
 import imple.Cola;
-import imple.Conjunto;
 
-public class ColaSinRepetidos {
-
+public class Ejercicio2 {
     public static ColaTDA resolver(ColaTDA cola) {
         ColaTDA aux = new Cola();
         aux.inicializarCola();
 
-        ColaTDA resultado = new Cola();
-        resultado.inicializarCola();
-
-        ConjuntoTDA vistos = new Conjunto();
-        vistos.inicializarConjunto();
+        ColaTDA clon = new Cola();
+        clon.inicializarCola();
 
         while (!cola.colaVacia()) {
             int x = cola.primero();
             cola.desacolar();
-
-            if (!vistos.pertenece(x)) {
-                resultado.acolar(x);
-                vistos.agregar(x);
-            }
-
+            clon.acolar(x);
             aux.acolar(x);
         }
 
@@ -34,6 +23,6 @@ public class ColaSinRepetidos {
             aux.desacolar();
         }
 
-        return resultado;
+        return clon;
     }
 }
