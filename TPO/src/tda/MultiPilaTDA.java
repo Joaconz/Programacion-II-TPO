@@ -1,10 +1,9 @@
 package tda;
 
-public interface MultiPilaTDA {
+public interface MultiPilaTDA extends PilaTDA {
     public void apilar(PilaTDA valores);
     public void desapilar(PilaTDA valores);
     public PilaTDA tope(int cantidad);
-    public void inicializarPila();
-    public boolean pilaVacia();
+    // los métodos de PilaTDA (inicializarPila, pilaVacia, apilar, desapilar, tope)
+    // ya están disponibles por herencia
 }
-

@@ -72,11 +72,12 @@ public class Main {
         // ConjuntoEspecial
         metodosExternos.ConjuntoEspecial ce = new metodosExternos.ConjuntoEspecial();
         ce.inicializarConjunto();
-        System.out.println("ConjuntoEspecial agregar 1: error=" + ce.agregar(1).error);
-        System.out.println("ConjuntoEspecial agregar 1 (otra vez): error=" + ce.agregar(1).error);
-        System.out.println("ConjuntoEspecial elegir: rta=" + ce.elegir().rta + " error=" + ce.elegir().error);
-        System.out.println("ConjuntoEspecial sacar 1: error=" + ce.sacar(1).error);
-        System.out.println("ConjuntoEspecial sacar 1 otra vez: error=" + ce.sacar(1).error);
+        System.out.println("ConjuntoEspecial agregar 1: error=" + ce.agregarRespuesta(1).error);
+        System.out.println("ConjuntoEspecial agregar 1 (otra vez): error=" + ce.agregarRespuesta(1).error);
+        tda.ConjuntoEspecialTDA.Respuesta r = ce.elegirRespuesta();
+        System.out.println("ConjuntoEspecial elegir: rta=" + r.rta + " error=" + r.error);
+        System.out.println("ConjuntoEspecial sacar 1: error=" + ce.sacarRespuesta(1).error);
+        System.out.println("ConjuntoEspecial sacar 1 otra vez: error=" + ce.sacarRespuesta(1).error);
 
         // ConjuntoMamushka
         metodosExternos.ConjuntoMamushka cm = new metodosExternos.ConjuntoMamushka(); cm.inicializar();

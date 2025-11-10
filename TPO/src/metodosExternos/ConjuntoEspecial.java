@@ -14,8 +14,35 @@ public class ConjuntoEspecial implements ConjuntoEspecialTDA {
         impl.inicializarConjunto();
     }
 
+    // implementamos la API tradicional heredada de ConjuntoTDA delegando en impl
     @Override
-    public Respuesta agregar(int valor) {
+    public void agregar(int valor) {
+        impl.agregar(valor);
+    }
+
+    @Override
+    public void sacar(int valor) {
+        impl.sacar(valor);
+    }
+
+    @Override
+    public int elegir() {
+        return impl.elegir();
+    }
+
+    @Override
+    public boolean pertenece(int valor) {
+        return impl.pertenece(valor);
+    }
+
+    @Override
+    public boolean conjuntoVacio() {
+        return impl.conjuntoVacio();
+    }
+
+    // Nuevos métodos que devuelven Respuesta
+    @Override
+    public Respuesta agregarRespuesta(int valor) {
         Respuesta r = new Respuesta();
         if (impl.pertenece(valor)) {
             r.error = true;
@@ -29,7 +56,7 @@ public class ConjuntoEspecial implements ConjuntoEspecialTDA {
     }
 
     @Override
-    public Respuesta sacar(int valor) {
+    public Respuesta sacarRespuesta(int valor) {
         Respuesta r = new Respuesta();
         if (!impl.pertenece(valor)) {
             r.error = true;
@@ -43,7 +70,7 @@ public class ConjuntoEspecial implements ConjuntoEspecialTDA {
     }
 
     @Override
-    public Respuesta elegir() {
+    public Respuesta elegirRespuesta() {
         Respuesta r = new Respuesta();
         if (impl.conjuntoVacio()) {
             r.error = true;
@@ -54,15 +81,4 @@ public class ConjuntoEspecial implements ConjuntoEspecialTDA {
         }
         return r;
     }
-
-    @Override
-    public boolean pertenece(int valor) {
-        return impl.pertenece(valor);
-    }
-
-    @Override
-    public boolean conjuntoVacio() {
-        return impl.conjuntoVacio();
-    }
 }
-

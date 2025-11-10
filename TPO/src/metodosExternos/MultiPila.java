@@ -13,6 +13,20 @@ public class MultiPila implements MultiPilaTDA {
         impl.inicializarPila();
     }
 
+    public void apilar(int i) {
+
+    }
+
+    @Override
+    public void desapilar() {
+
+    }
+
+    @Override
+    public int tope() {
+        return 0;
+    }
+
     @Override
     public boolean pilaVacia() {
         return impl.pilaVacia();

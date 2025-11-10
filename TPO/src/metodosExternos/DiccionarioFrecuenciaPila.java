@@ -2,6 +2,7 @@ package metodosExternos;
 
 import tda.PilaTDA;
 import tda.DiccionarioSimpleTDA;
+import tda.ConjuntoTDA;
 import imple.Pila;
 import imple.DiccionarioSimple;
 
@@ -18,7 +19,11 @@ public class DiccionarioFrecuenciaPila {
             int x = pila.tope();
             pila.desapilar();
 
-            int freq = dic.recuperar(x);
+            int freq = 0;
+            ConjuntoTDA claves = dic.claves();
+            if (!claves.conjuntoVacio() && claves.pertenece(x)) {
+                freq = dic.recuperar(x);
+            }
             dic.agregar(x, freq + 1);
 
             aux.apilar(x);

@@ -1,6 +1,7 @@
 package metodosExternos;
 
 import tda.ConjuntoMamushkaTDA;
+import tda.ConjuntoTDA;
 
 public class ConjuntoMamushka implements ConjuntoMamushkaTDA {
     private int[] elems;
@@ -33,29 +34,24 @@ public class ConjuntoMamushka implements ConjuntoMamushkaTDA {
         n = 0;
     }
 
+    // Métodos heredados de ConjuntoTDA
     @Override
-    public void guardar(int dato) {
-        // buscar
-        for (int i = 0; i < n; i++) {
-            if (elems[i] == dato) {
-                counts[i] = counts[i] + 1;
-                return;
-            }
-        }
-        // insertar nuevo
-        ensureCapacity();
-        elems[n] = dato;
-        counts[n] = 1;
-        n++;
+    public void inicializarConjunto() {
+        inicializar();
+    }
+
+    @Override
+    public void agregar(int dato) {
+        guardar(dato);
     }
 
     @Override
     public void sacar(int dato) {
+        // sacrar una acepción
         for (int i = 0; i < n; i++) {
             if (elems[i] == dato) {
                 counts[i] = counts[i] - 1;
                 if (counts[i] <= 0) {
-                    // eliminar elemento: reemplazar con el último
                     elems[i] = elems[n - 1];
                     counts[i] = counts[n - 1];
                     n--;
@@ -67,8 +63,33 @@ public class ConjuntoMamushka implements ConjuntoMamushkaTDA {
 
     @Override
     public int elegir() {
-        if (n == 0) return 0; // elección arbitraria cuando está vacío
+        if (n == 0) return 0;
         return elems[0];
+    }
+
+    @Override
+    public boolean pertenece(int dato) {
+        return perteneceCant(dato) > 0;
+    }
+
+    @Override
+    public boolean conjuntoVacio() {
+        return estaVacio();
+    }
+
+    // Métodos propios de ConjuntoMamushka
+    @Override
+    public void guardar(int dato) {
+        for (int i = 0; i < n; i++) {
+            if (elems[i] == dato) {
+                counts[i] = counts[i] + 1;
+                return;
+            }
+        }
+        ensureCapacity();
+        elems[n] = dato;
+        counts[n] = 1;
+        n++;
     }
 
     @Override
